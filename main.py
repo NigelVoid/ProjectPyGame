@@ -65,6 +65,9 @@ while flag:
                 elif 340 <= mouse_position[0] <= 590 and 330 <= mouse_position[1] <= 410:
                     pygame.mixer.music.stop()
                     runpy.run_module('GAME3')
+                elif 340 <= mouse_position[0] <= 590 and 330 <= mouse_position[1] <= 510:
+                    pygame.mixer.music.stop()
+                    runpy.run_module('GAME4')
             if change_music:
                 if 160 <= mouse_position[0] <= 230 and 45 <= mouse_position[1] <= 115:
                     pygame.mixer.music.stop()
