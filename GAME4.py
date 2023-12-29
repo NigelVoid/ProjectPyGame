@@ -146,10 +146,10 @@ TILE_SIZE = WIDTH // GRID_SIZE
 generate_number()
 flag = True
 while flag:
+    handle_events()
+    draw_grid()
+    pygame.display.update()
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             flag = False
             runpy.run_module('main')
-    handle_events()
-    draw_grid()
-    pygame.display.update()
