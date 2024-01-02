@@ -126,8 +126,12 @@ def move_down():
 
 
 def handle_events():
+    global flag
     for event in pygame.event.get():
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.QUIT:
+            flag = False
+            runpy.run_module('main')
+        elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
                 move_left()
                 generate_number()
@@ -149,7 +153,3 @@ while flag:
     handle_events()
     draw_grid()
     pygame.display.update()
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            flag = False
-            runpy.run_module('main')

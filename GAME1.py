@@ -59,7 +59,7 @@ class Object1:
                 if self.role == 0:
                     points += 60
                 else:
-                    points -= 500
+                    points -= 240
                 self.x = random.randint(0, 450)
                 self.y = random.randint(-500, -100)
                 self.role = random.randint(0, 1)
@@ -95,7 +95,7 @@ class Object2:
                 if self.role == 0:
                     points += 60
                 else:
-                    points -= 500
+                    points -= 240
                 self.x = random.randint(0, 450)
                 self.y = random.randint(-500, -100)
                 self.role = random.randint(0, 1)
@@ -131,7 +131,7 @@ class Object3:
                 if self.role == 0:
                     points += 60
                 else:
-                    points -= 500
+                    points -= 240
                 self.x = random.randint(0, 450)
                 self.y = random.randint(-500, -100)
                 self.role = random.randint(0, 1)
@@ -167,7 +167,7 @@ class Object4:
                 if self.role == 0:
                     points += 60
                 else:
-                    points -= 500
+                    points -= 240
                 self.x = random.randint(0, 450)
                 self.y = random.randint(-500, -100)
                 self.role = random.randint(0, 1)
@@ -203,7 +203,7 @@ class Object5:
                 if self.role == 0:
                     points += 60
                 else:
-                    points -= 500
+                    points -= 240
                 self.x = random.randint(0, 450)
                 self.y = random.randint(-500, -100)
                 self.role = random.randint(0, 1)
