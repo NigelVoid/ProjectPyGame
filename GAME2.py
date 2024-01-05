@@ -314,7 +314,6 @@ class object5:
                 self.bread = False
 
 
-
 flag = True
 shrift = pygame.font.SysFont('arial', 30)
 fons = [pygame.image.load('images/fons_pr/fon_pr(1).png'), pygame.image.load('images/fons_pr/fon_pr(2).png'),
@@ -417,6 +416,9 @@ while flag:
             t2 = datetime.now()
             win_t = True
         win.blit(pygame.image.load('images/win_pr.png'), (0, 0))
+        with open('PR.txt', mode='w', encoding='utf8') as f:
+            print('rbnghjbrrghjrgrbngkrhjbgrejkbgeruigbrejghbnergjrehngreuhngujikregbnhrujikwaghliufhuiawhf', file=f)
+            print('erhuighreguihreguhreuigherui9ghuirhg9uwhu9erhguigyes', file=f)
         if datetime.now() >= t2 + timedelta(seconds=5):
             flag = False
             runpy.run_module('main')

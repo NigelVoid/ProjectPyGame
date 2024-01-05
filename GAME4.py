@@ -4,7 +4,6 @@ import pygame
 import random
 
 pygame.init()
-
 WIDTH, HEIGHT = 400, 400
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("2048")
@@ -28,7 +27,13 @@ FONT = pygame.font.Font(None, 64)
 
 GRID_SIZE = 4
 
-grid = [[0] * GRID_SIZE for _ in range(GRID_SIZE)]
+grid = [[128] * GRID_SIZE for _ in range(GRID_SIZE)]
+half_progress = False
+full_progress = False
+with open('2048.txt', mode='r', encoding='utf8') as f:
+    l = f.readlines()
+    if (l[1].rstrip())[:3] == 'yes':
+        full_progress = True
 
 
 def generate_number():
@@ -42,6 +47,7 @@ def generate_number():
 
 
 def draw_grid():
+    global half_progress, full_progress
     WINDOW.fill(BACKGROUND_COLOR)
     for row in range(GRID_SIZE):
         for col in range(GRID_SIZE):
@@ -53,6 +59,10 @@ def draw_grid():
                 text_rect = text_surface.get_rect(
                     center=(col * TILE_SIZE + TILE_SIZE / 2, row * TILE_SIZE + TILE_SIZE / 2))
                 WINDOW.blit(text_surface, text_rect)
+            if number == 1024:
+                half_progress = True
+            if number == 2048:
+                full_progress = True
 
 
 def move_left():
@@ -129,6 +139,14 @@ def handle_events():
     global flag
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            if half_progress:
+                with open('2048.txt', mode='w', encoding='utf8') as f:
+                    print('yeshfiwehbfihbefgewfwegbjkfegbfgbwefuiwerugbfgbe', file=f)
+                    print('norg9ryugrguihreuighujgio04uguwe9guj90wef98yesrghirhfYESjoef', file=f)
+            if full_progress:
+                with open('2048.txt', mode='w', encoding='utf8') as f:
+                    print('yeshfiwehbfihbefgewfwegbjkfegbfgbwefuiwerugbfgbe', file=f)
+                    print('yesrg9ryugrguihreuighujgio04uguwe9guj90wef98yesrghirhfYESjoef', file=f)
             flag = False
             runpy.run_module('main')
         elif event.type == pygame.KEYDOWN:

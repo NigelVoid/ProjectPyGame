@@ -1,6 +1,7 @@
 import pygame
 import runpy
 from sys import exit
+
 pygame.init()
 win = pygame.display.set_mode((1000, 600))
 flag = True
@@ -12,7 +13,33 @@ change_music = False
 pygame.mixer.music.load('music/music_fon1.wav')
 pygame.mixer.music.play(-1)
 show_games = False
-
+show_achivements = False
+ach1 = False
+ach2 = False
+ach3 = False
+ach4 = False
+ach5 = False
+with open('hfm.txt', mode='r', encoding='utf8') as f:
+    l = f.readlines()
+    record = int((l[0].rstrip())[80:])
+    if record >= 31000:
+        ach1 = True
+with open('PR.txt', mode='r', encoding='utf8') as f:
+    l = f.readlines()
+    s = (l[1].rstrip())[49:]
+    if s == 'yes':
+        ach2 = True
+with open('ping-pong.txt', mode='r', encoding='utf8') as f:
+    l = f.readlines()
+    s = (l[0].rstrip())[15:18]
+    if s == 'yes':
+        ach3 = True
+with open('2048.txt', mode='r', encoding='utf8') as f:
+    l = f.readlines()
+    if (l[0].rstrip())[:3] == 'yes':
+        ach4 = True
+    if (l[1].rstrip())[:3] == 'yes':
+        ach5 = True
 while flag:
     win.blit(fons[int(c)], (0, 0))
     win.blit(pygame.image.load('images/logo.png'), (300, 50))
@@ -23,16 +50,24 @@ while flag:
     c += 0.25
     if c == 2:
         c = 0
+    if show_achivements:
+        pygame.draw.rect(win, (180, 180, 180), (325, 50, 350, 500))
+        win.blit(pygame.image.load('images/buttons/close_games.png'), (615, 50))
+        pygame.draw.rect(win, (80, 80, 80), (335, 80, 250, 70))
+        if ach1:
+            pygame.draw.rect(win, (255, 255, 255), (335, 80, 250, 70))
+        pygame.draw.rect(win, (80, 80, 80), (335, 170, 250, 70))
+        pygame.draw.rect(win, (80, 80, 80), (335, 260, 250, 70))
+        pygame.draw.rect(win, (80, 80, 80), (335, 350, 250, 70))
+        pygame.draw.rect(win, (80, 80, 80), (335, 440, 250, 70))
     if show_games:
         pygame.draw.rect(win, (180, 180, 180), (325, 50, 350, 500))
         win.blit(pygame.image.load('images/buttons/close_games.png'), (615, 50))
-        pygame.draw.rect(win, (0, 255, 0), (340, 130, 250, 80), 4)
         win.blit(pygame.image.load('images/hungry_fat_man_logo.png'), (340, 130))
-        pygame.draw.rect(win, (255, 255, 0), (340, 230, 250, 80), 4)
         win.blit(pygame.image.load('images/ПОЧТА РОССИИ_лого.png'), (340, 230))
-        pygame.draw.rect(win, (0, 255, 0), (340, 330, 250, 80), 4)
         win.blit(pygame.image.load('images/ping-pong_logo.png'), (340, 330))
         pygame.draw.rect(win, (0, 255, 0), (340, 430, 250, 80), 4)
+        win.blit(pygame.image.load('images/2048_logo.png'), (340, 430))
     if change_music:
         pygame.draw.rect(win, (150, 150, 150), (140, 30, 290, 100))
         pygame.draw.rect(win, (0, 0, 0), (160, 45, 70, 70))
@@ -51,7 +86,14 @@ while flag:
                 else:
                     change_music = False
             if 20 <= mouse_position[0] <= 320 and 220 <= mouse_position[1] <= 300:
-                show_games = True
+                if not show_achivements:
+                    show_games = True
+            if 20 <= mouse_position[0] <= 320 and 320 <= mouse_position[1] <= 400:
+                if not show_games:
+                    show_achivements = True
+            if show_achivements:
+                if 615 <= mouse_position[0] <= 675 and 50 <= mouse_position[1] <= 110:
+                    show_achivements = False
             if show_games:
                 if 615 <= mouse_position[0] <= 675 and 50 <= mouse_position[1] <= 110:
                     show_games = False
@@ -81,5 +123,5 @@ while flag:
                     pygame.mixer.music.stop()
                     pygame.mixer.music.load('music/music_fon3.wav')
                     pygame.mixer.music.play(-1)
-
+    print(ach1, ach2, ach3, ach4, ach5)
     pygame.display.update()
