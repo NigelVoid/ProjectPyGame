@@ -27,7 +27,7 @@ FONT = pygame.font.Font(None, 64)
 
 GRID_SIZE = 4
 
-grid = [[128] * GRID_SIZE for _ in range(GRID_SIZE)]
+grid = [[0] * GRID_SIZE for _ in range(GRID_SIZE)]
 half_progress = False
 full_progress = False
 with open('2048.txt', mode='r', encoding='utf8') as f:
