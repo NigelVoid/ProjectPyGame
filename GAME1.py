@@ -7,7 +7,6 @@ pygame.init()
 win = pygame.display.set_mode((500, 600))
 pygame.display.set_caption('HUNGRY FAT MAN')
 
-pygame.display.set_icon(pygame.image.load('images/icons/иконка1.bmp'))
 flag = True
 x = 200
 y = 450

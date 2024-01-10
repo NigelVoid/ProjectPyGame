@@ -8,6 +8,7 @@ flag = True
 fons = [pygame.image.load('images/фон.png'), pygame.image.load('images/фон2.png')]
 c = 0
 pygame.display.set_caption('Mini Mini Games')
+pygame.display.set_icon(pygame.image.load('images/icons/logo.png'))
 mouse_position = 0
 change_music = False
 pygame.mixer.music.load('music/music_fon1.wav')
@@ -45,7 +46,6 @@ while flag:
     win.blit(pygame.image.load('images/logo.png'), (300, 50))
     win.blit(pygame.image.load('images/change_music.png'), (20, 30))
     win.blit(pygame.image.load('images/buttons/start_button.png'), (20, 220))
-    pygame.draw.rect(win, (255, 0, 0), (20, 320, 300, 80), 4)
     win.blit(pygame.image.load('images/buttons/ach_button.png'), (20, 320))
     c += 0.25
     if c == 2:
@@ -55,11 +55,19 @@ while flag:
         win.blit(pygame.image.load('images/buttons/close_games.png'), (615, 50))
         pygame.draw.rect(win, (80, 80, 80), (335, 80, 250, 70))
         if ach1:
-            pygame.draw.rect(win, (255, 255, 255), (335, 80, 250, 70))
+            win.blit(pygame.image.load('images/achivements/ach1.png'), (335, 80))
         pygame.draw.rect(win, (80, 80, 80), (335, 170, 250, 70))
+        if ach2:
+            win.blit(pygame.image.load('images/achivements/ach2.png'), (335, 170))
         pygame.draw.rect(win, (80, 80, 80), (335, 260, 250, 70))
+        if ach3:
+            win.blit(pygame.image.load('images/achivements/ach3.png'), (335, 260))
         pygame.draw.rect(win, (80, 80, 80), (335, 350, 250, 70))
+        if ach4:
+            win.blit(pygame.image.load('images/achivements/ach4.png'), (335, 350))
         pygame.draw.rect(win, (80, 80, 80), (335, 440, 250, 70))
+        if ach5:
+            win.blit(pygame.image.load('images/achivements/ach5.png'), (335, 440))
     if show_games:
         pygame.draw.rect(win, (180, 180, 180), (325, 50, 350, 500))
         win.blit(pygame.image.load('images/buttons/close_games.png'), (615, 50))
@@ -69,10 +77,10 @@ while flag:
         pygame.draw.rect(win, (0, 255, 0), (340, 430, 250, 80), 4)
         win.blit(pygame.image.load('images/2048_logo.png'), (340, 430))
     if change_music:
-        pygame.draw.rect(win, (150, 150, 150), (140, 30, 290, 100))
-        pygame.draw.rect(win, (0, 0, 0), (160, 45, 70, 70))
-        pygame.draw.rect(win, (0, 0, 0), (250, 45, 70, 70))
-        pygame.draw.rect(win, (0, 0, 0), (340, 45, 70, 70))
+        pygame.draw.rect(win, (70, 130, 180), (140, 30, 290, 100))
+        win.blit(pygame.image.load('images/buttons/smus_button.png'), (160, 45))
+        win.blit(pygame.image.load('images/buttons/smus_button.png'), (250, 45))
+        win.blit(pygame.image.load('images/buttons/smus_button.png'), (340, 45))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             flag = False
@@ -102,7 +110,6 @@ while flag:
                     runpy.run_module('GAME1')
                 elif 340 <= mouse_position[0] <= 590 and 230 <= mouse_position[1] <= 310:
                     pygame.mixer.music.stop()
-                    pygame.display.set_icon(pygame.image.load('images/icons/иконка2.bmp'))
                     runpy.run_module('GAME2')
                 elif 340 <= mouse_position[0] <= 590 and 330 <= mouse_position[1] <= 410:
                     pygame.mixer.music.stop()

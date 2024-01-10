@@ -5,7 +5,6 @@ from pygame.locals import *
 import runpy
 
 pygame.init()
-
 WIDTH = 800
 HEIGHT = 400
 BALL_RADIUS = 10
@@ -18,6 +17,7 @@ WHITE = (255, 255, 255)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("PING-PONG")
+pygame.display.set_icon(pygame.image.load('images/icons/logo.png'))
 r1 = True
 r2 = False
 r3 = False
@@ -74,37 +74,37 @@ while running:
     keys = pygame.key.get_pressed()
     if keys[K_UP]:
         if r4:
-            if paddle2_pos - 8 >= 0:
-                paddle2_pos -= 8
+            if paddle2_pos - 10 >= 0:
+                paddle2_pos -= 10
         else:
             if paddle2_pos - 5 >= 0:
                 paddle2_pos -= 5
     if keys[K_DOWN]:
         if r4:
-            if paddle2_pos + 60 + 8 <= 400:
-                paddle2_pos += 8
+            if paddle2_pos + 60 + 10 <= 400:
+                paddle2_pos += 10
         else:
             if paddle2_pos + 60 + 5 <= 400:
                 paddle2_pos += 5
     if keys[K_w]:
         if r4:
-            if paddle1_pos - 8 >= 0:
-                paddle1_pos -= 8
+            if paddle1_pos - 10 >= 0:
+                paddle1_pos -= 10
         else:
             if paddle1_pos - 5 >= 0:
                 paddle1_pos -= 5
     if keys[K_s]:
         if r4:
-            if paddle1_pos + 60 + 8 <= 400:
-                paddle1_pos += 8
+            if paddle1_pos + 60 + 10 <= 400:
+                paddle1_pos += 10
         else:
             if paddle1_pos + 60 + 5 <= 400:
                 paddle1_pos += 5
     if r4:
         if ball_vel[0] < 0:
-            ball_pos[0] += ball_vel[0] - 2
+            ball_pos[0] += ball_vel[0] - 5
         else:
-            ball_pos[0] += ball_vel[0] + 2
+            ball_pos[0] += ball_vel[0] + 5
         if 0 > ball_vel[1]:
             ball_pos[1] += ball_vel[1] - 3
         else:

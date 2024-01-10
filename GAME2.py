@@ -7,8 +7,7 @@ import random
 pygame.init()
 win = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('ПОЧТА РОССИИ')
-pygame.display.set_icon(pygame.image.load('images/icons/иконка2.bmp'))
-
+pygame.display.set_icon(pygame.image.load('images/icons/logo.png'))
 
 class object1:
     def __init__(self):

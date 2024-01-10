@@ -7,6 +7,7 @@ pygame.init()
 WIDTH, HEIGHT = 400, 400
 WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("2048")
+pygame.display.set_icon(pygame.image.load('images/icons/logo.png'))
 
 BACKGROUND_COLOR = (187, 173, 160)
 TILE_COLORS = {
