@@ -1,7 +1,6 @@
 import random
 
 import pygame
-from pygame.locals import *
 import runpy
 
 pygame.init()
@@ -43,7 +42,7 @@ COLOR_circle = (255, 255, 255)
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            flag = False
+            running = False
             runpy.run_module('main')
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_1:
@@ -72,28 +71,28 @@ while running:
                 rr4 = True
 
     keys = pygame.key.get_pressed()
-    if keys[K_UP]:
+    if keys[pygame.K_UP]:
         if r4:
             if paddle2_pos - 10 >= 0:
                 paddle2_pos -= 10
         else:
             if paddle2_pos - 5 >= 0:
                 paddle2_pos -= 5
-    if keys[K_DOWN]:
+    if keys[pygame.K_DOWN]:
         if r4:
             if paddle2_pos + 60 + 10 <= 400:
                 paddle2_pos += 10
         else:
             if paddle2_pos + 60 + 5 <= 400:
                 paddle2_pos += 5
-    if keys[K_w]:
+    if keys[pygame.K_w]:
         if r4:
             if paddle1_pos - 10 >= 0:
                 paddle1_pos -= 10
         else:
             if paddle1_pos - 5 >= 0:
                 paddle1_pos -= 5
-    if keys[K_s]:
+    if keys[pygame.K_s]:
         if r4:
             if paddle1_pos + 60 + 10 <= 400:
                 paddle1_pos += 10
@@ -155,8 +154,8 @@ while running:
     pygame.draw.line(screen, WHITE, [WIDTH - PADDLE_WIDTH, 0], [WIDTH - PADDLE_WIDTH, HEIGHT], 1)
     pygame.draw.circle(screen, COLOR_circle, [WIDTH // 2, HEIGHT // 2], 50, 1)
     pygame.draw.circle(screen, COLOR_circle, [WIDTH // 2, HEIGHT // 2], 2)
-    pygame.draw.rect(screen, WHITE, Rect((PADDLE_WIDTH, paddle1_pos), (PADDLE_WIDTH, PADDLE_HEIGHT)))
-    pygame.draw.rect(screen, WHITE, Rect((WIDTH - PADDLE_WIDTH * 2, paddle2_pos), (PADDLE_WIDTH, PADDLE_HEIGHT)))
+    pygame.draw.rect(screen, WHITE, (PADDLE_WIDTH, paddle1_pos, PADDLE_WIDTH, PADDLE_HEIGHT))
+    pygame.draw.rect(screen, WHITE, (WIDTH - PADDLE_WIDTH * 2, paddle2_pos, PADDLE_WIDTH, PADDLE_HEIGHT))
     pygame.draw.circle(screen, WHITE, ball_pos, BALL_RADIUS)
     if ball_pos[0] > 800:
         score1 += 1
